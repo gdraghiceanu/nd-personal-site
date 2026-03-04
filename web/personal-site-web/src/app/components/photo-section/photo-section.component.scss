@@ -46,22 +46,31 @@ h2 {
   background: #f1f5f9;
   aspect-ratio: 4 / 3;
 
-  &--featured {
-    grid-column: span 2;
-    aspect-ratio: 16 / 9;
+  &--banner {
+    grid-column: span 3;
+    aspect-ratio: 21 / 9;
+
+    img {
+      object-position: center 65%;
+    }
 
     @media (max-width: 640px) {
       grid-column: span 2;
+      aspect-ratio: 16 / 9;
     }
   }
 
   &--wide {
-    grid-column: span 3;
-    aspect-ratio: 16 / 6;
+    grid-column: span 2;
 
     @media (max-width: 640px) {
-      grid-column: span 2;
+      grid-column: span 1;
     }
+  }
+
+  &--personal {
+    aspect-ratio: auto;
+    min-height: 280px;
   }
 
   img {
