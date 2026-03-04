@@ -48,15 +48,14 @@ h2 {
 
   &--banner {
     grid-column: span 3;
-    aspect-ratio: 21 / 9;
+    aspect-ratio: 16 / 9;
 
     img {
-      object-position: center 65%;
+      object-position: center bottom;
     }
 
     @media (max-width: 640px) {
       grid-column: span 2;
-      aspect-ratio: 16 / 9;
     }
   }
 
