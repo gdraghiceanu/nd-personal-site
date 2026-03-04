@@ -29,7 +29,7 @@ public sealed class SendGridEmailService : IEmailService
         var msg = new SendGridMessage
         {
             From        = new EmailAddress(senderEmail, senderName),
-            Subject     = $"[Personal Site] New message from {request.Name}",
+            Subject     = $"Message from nataliadraghiceanu.com - {request.Name}",
             PlainTextContent = BuildPlainText(request),
             HtmlContent      = BuildHtml(request)
         };
