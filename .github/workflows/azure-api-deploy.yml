@@ -1,0 +1,38 @@
+name: Deploy API to Azure App Service
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'api/**'
+      - '.github/workflows/azure-api-deploy.yml'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore api/PersonalSite.Api/PersonalSite.Api.csproj
+
+      - name: Build
+        run: dotnet build api/PersonalSite.Api/PersonalSite.Api.csproj --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish api/PersonalSite.Api/PersonalSite.Api.csproj --configuration Release --no-build --output ./publish
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'nd-personal-site-api'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./publish

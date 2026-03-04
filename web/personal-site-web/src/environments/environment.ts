@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://api.your-domain.com',
+  apiBaseUrl: 'https://nd-personal-site-api-dpheanbyhef0e6cs.westeurope-01.azurewebsites.net',
   contactEmail: 'ndraghiceanu@gmail.com'
 };
